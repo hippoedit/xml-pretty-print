@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.hippoedit.com/xml/package-info">
+<package-info xmlns="http://www.hippoedit.com/xml/package-info" xmlns:smf="http://www.hippoedit.com/">
+    <id>0BE253F8-BE23-4B7C-928C-38293F18C9D2</id>
+    <name>XML Pretty Print</name>
+    <version>1.0.1.0</version>
+    <description>Extends FormatAll and FormatSelection functions for XML</description>
+    <author>rjp, Vadim Kiryukhin</author>
+    <email>supportbox@hippoedit.com</email>
+    <homepage>http://wiki.hippoedit.com/plugins/xml-pretty-print</homepage>
+    <memo>
+    </memo>
+    <install>
+        <readme type="inline">This will install XML Pretty Print plug-in for HippoEDIT.</readme>
+        <require-file name="vkbeautify.0.99.00.beta.js" destination="%{plugins}%/vkbeautify.0.99.00.beta.js" />
+        <require-file name="xmlPrettyPrint.hejs" destination="%{plugins}%/xmlPrettyPrint.hejs" />
+        <install-plugin path="%{plugins}%/xmlPrettyPrint.hejs"/>
+    </install>
+    <uninstall>
+        <readme type="inline">This will uninstall XML Pretty Print plug-in for HippoEDIT.</readme>
+        <uninstall-plugin id="0BE253F8-BE23-4B7C-928C-38293F18C9D2"/>
+        <remove-file name="%{plugins}%/xmlPrettyPrint.hejs" />
+        <remove-file name="%{plugins}%/vkbeautify.0.99.00.beta.js" />
+    </uninstall>
+</package-info>

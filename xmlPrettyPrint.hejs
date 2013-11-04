@@ -1,0 +1,30 @@
+#include "he_utils.js" // generic helper functions
+
+AddScriptInfo("0BE253F8-BE23-4B7C-928C-38293F18C9D2", "XMLPrettyPrint", "1.0.1.0", "XML Pretty Print", "rjp, Vadim Kiryukhin");
+
+function mul(str, num) {
+	return num ? Array(num + 1).join(str) : "";
+}
+
+Application.onTextFormat = function(sel, bIndent) {
+	var syntax = this.GetStyleFromPos(sel.Start).Style.Syntax;
+	if (syntax.IsInheritedFrom("xml") && (!syntax.IsInheritedFrom("html") || !syntax.IsInheritedFrom("html")) ) {
+		if (sel.IsEmpty) sel = new Range(0, 0, ActiveDocument.LineCount - 1, ActiveDocument.GetLineLength(ActiveDocument.LineCount - 1));
+		var text = ax2js(this.GetLines(sel, false)).join("");
+		if (text !== "") {			
+			var TabMode  = this.Syntax.TabMode;
+			var bUseTabs = (TabMode != ecTabModeTabsToSpaces);
+			if ( bUseTabs && TabMode == ecTabModeAuto )
+				bUseTabs = this.TabUsed;
+
+			var indentation = "";
+			if (bUseTabs == true) indentation = '\t';
+			else indentation = mul(' ', this.IndentSize);
+
+			__include("vkbeautify.0.99.00.beta.js");
+			this.ActiveView.Position = this.ReplaceText(sel, vkbeautify.xml(text, indentation, this.LineBreak), AddUndoActionType("XML Pretty Print"));
+		}
+		return true;
+	}
+	return false;
+};
