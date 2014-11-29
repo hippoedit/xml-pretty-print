@@ -3,7 +3,7 @@
 <package-info xmlns="http://www.hippoedit.com/xml/package-info" xmlns:smf="http://www.hippoedit.com/">
     <id>0BE253F8-BE23-4B7C-928C-38293F18C9D2</id>
     <name>XML Pretty Print</name>
-    <version>1.0.1.0</version>
+    <version>1.0.1.1</version>
     <description>Extends FormatAll and FormatSelection functions for XML</description>
     <author>rjp, Vadim Kiryukhin</author>
     <email>supportbox@hippoedit.com</email>
