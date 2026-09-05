@@ -87,7 +87,7 @@ vkbeautify.prototype.xml = function(text,step,lb) {
 	var ar = text.replace(/>\s{0,}</g,"><")
 				 .replace(/</g,"~::~<")
 				 .replace(/\s*xmlns\:/g,"~::~xmlns:")
-				 .replace(/\s*xmlns\=\"[^\"]+/g,"~::~xmlns=")
+				 .replace(/\s*xmlns\=/g,"~::~xmlns=")
 				 .split('~::~'),
 		len = ar.length,
 		inComment = false,
